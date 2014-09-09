@@ -62,7 +62,7 @@ def build_html dir
   end
 
   FileUtils.mkdir dir
-  FileUtils.cp_r %w(_data _includes _layouts _plugins assets docs _config.yml), dir
+  FileUtils.cp_r %w(_data _includes _layouts _plugins assets docs _config.yml grammar.xml), dir
   FileUtils.cp "#{dir}/_layouts/pdf.html", "#{dir}/_layouts/reference.html" # substitute the original page layout
   FileUtils.cp "#{dir}/_layouts/pdf.html", "#{dir}/_layouts/api.html" # substitute the original page layout
   FileUtils.cd dir

@@ -42,9 +42,11 @@
 
 .grammar-declaration-usedby {
   display: inline-block;
+  vertical-align: top;
   color: #999; }
 
 .grammar-description {
+  margin-bottom: 0 !important;
   font-family: "Liberation Mono", Consolas, Menlo, Courier, monospace; }
 
 .grammar-string {

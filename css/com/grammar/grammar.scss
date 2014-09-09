@@ -49,11 +49,13 @@
 
 .grammar-declaration-usedby {
     display: inline-block;
+    vertical-align: top;
     color: #999;
 }
 
 
 .grammar-description {
+    margin-bottom: 0 !important;
     font-family: $font-family-mono;
 }
 
@@ -74,5 +76,11 @@
 
 
 .grammar-other {
+
+}
+
+.grammar-annotation,
+.grammar-declaration-name,
+.grammar-declaration-usedby {
 
 }

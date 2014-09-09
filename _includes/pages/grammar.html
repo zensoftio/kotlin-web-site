@@ -33,9 +33,8 @@
 
             {% when 'description' %}
             {% if item.content.size > 0 %}
-            <div class="grammar-description">
-                {% for item in item.content %}{% case item.type %}{% when 'identifier' %}<a class="grammar-identifier-name" href="#{{ item.name }}">{{ item.name }}</a>{% when 'string' %}<span class="grammar-string">{{ item.content | escape }}</span>{% when 'symbol' %}<span class="grammar-symbol">{{ item.content }}</span>{% when 'other' %}<span class="grammar-other">{{ item.content }}</span>{% when 'whitespace' %}{{ item.content | replace:' ','&nbsp;' }}{% when 'crlf' %}<br>{% endcase %}{% endfor %}
-            </div>
+            <pre class="grammar-description">
+{% for item in item.content %}{% case item.type %}{% when 'identifier' %}<a class="grammar-identifier-name" href="#{{ item.name }}">{{ item.name }}</a>{% when 'string' %}<span class="grammar-string">{{ item.content | escape }}</span>{% when 'symbol' %}<span class="grammar-symbol">{{ item.content }}</span>{% when 'other' %}<span class="grammar-other">{{ item.content }}</span>{% when 'whitespace' %}{{ item.content | replace:' ','&nbsp;' }}{% when 'crlf' %}<br>{% endcase %}{% endfor %}</pre>
             {% endif %}
 
             {% endcase %}
