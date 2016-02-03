@@ -21,7 +21,7 @@ var webpackConfig = {
     filename: '[name].js'
   },
   resolve: {
-    modulesDirectories: ['node_modules', './js']
+    modulesDirectories: ['node_modules', './js', './ui']
   },
 
   debug: isProduction,
@@ -31,17 +31,15 @@ var webpackConfig = {
     loaders: [
       {
         test: /\.scss$/,
-        loaders: WebpackExtractTextPlugin.extract([
+        loader: WebpackExtractTextPlugin.extract([
           'css',
           'postcss',
           'sass'
-        ])
+        ].join('!'))
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/,
-        loaders: [
-          'advanced-url?limit=10000&name=[path][name].[ext]'
-        ]
+        loader: 'advanced-url?limit=10000&name=[path][name].[ext]'
       }
     ]
   },
