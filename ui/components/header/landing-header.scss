@@ -1,0 +1,23 @@
+@import "../core/config";
+@import "../core/utils";
+
+$header-height: 40px;
+$logo-width: 40px;
+$logo-height: 40px;
+
+.page__header {
+  position: fixed;
+}
+
+.landing-header {
+  height: $header-height;
+
+  background-color: $color-bg-gray-dark;
+}
+
+.landing-header__logo.jetbrains-logo._full-block {
+  display: block;
+
+  width: $logo-width;
+  height: $logo-height;
+}

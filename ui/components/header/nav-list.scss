@@ -1,0 +1,226 @@
+@import "./config";
+@import "../core/utils";
+@import "../button/config";
+
+%nav-list-main {
+  z-index: 3;
+
+  //justify-content: space-between;
+  height: $header-main-height;
+
+  transition: height $transition-fast;
+
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+
+  @include make-break-lg {
+    font-size: 11px;
+  }
+}
+
+.nav-list {
+  position: relative;
+
+  display: flex;
+  align-content: stretch;
+
+  &._main {
+    @extend %nav-list-main;
+  }
+  &._search {
+    @extend %nav-list-main;
+    justify-content: flex-end;
+  }
+
+  &._secondary {
+    align-items: stretch;
+    justify-content: flex-end;
+
+    height: $header-secondary-height;
+
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.2;
+
+    @include make-break-lg {
+      font-size: 13.5px;
+    }
+    @include make-break-md {
+      font-size: 12.5px;
+    }
+  }
+}
+
+
+.nav-list__item {
+  display: flex;
+  align-items: center;
+
+  box-sizing: border-box;
+  padding: 0 20px;
+
+  transition: background $transition-fast, color $transition-fast;
+
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+
+  @include make-break-xlg {
+    padding: 0 17px;
+  }
+  @include make-break-lg {
+    padding: 0 15px;
+  }
+  @include make-break-md {
+    padding: 0 12px;
+  }
+  @include make-break-sm {
+    padding: 0 10px;
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  .nav-list._main &,
+  .nav-list._search & {
+    color: $color-text-gray-dark;
+
+    .header._dark & {
+      color: $color-text-white;
+    }
+
+    .page-404 & {
+      color: $color-text-gray-dark;
+    }
+
+    &._active,
+    &:hover {
+      background: $header-sub-background;
+      color: $color-text-gray-dark;
+    }
+  }
+
+  .nav-list._secondary & {
+    @extend %a-actions;
+
+    margin-bottom:-1px;
+    color: $color-text-gray-medium;
+    //white-space: nowrap;
+
+    &._active {
+      font-weight: 700;
+      color: $color-black;
+      align-items: stretch;
+
+      > span {
+        display: flex;
+        align-items: center;
+        position: relative;
+
+        box-sizing: border-box;
+
+        &:after {
+          position: absolute;
+          left: 0;
+          bottom: 0;
+
+          height: 4px;
+          width: 100%;
+
+          content: '';
+          background-color: $color-black;
+        }
+      }
+    }
+
+
+    &._button {
+      align-self: center;
+
+      margin-left: 2%;
+      height: 40px;
+
+      color: $button-primary-color;
+      background: $button-primary-background;
+      border-radius: $button-unit * .5;
+
+      &._active {
+        height: 100%;
+        margin-left: 0;
+
+        background-color: transparent;
+        color: $color-black;
+        border-radius: 0;
+
+        &:hover {
+          background-color: transparent;
+        }
+      }
+
+      @include make-break-md {
+        height: 30px;
+      }
+
+      &:hover {
+        background-color: $button-primary-hover-background;
+      }
+    }
+  }
+}
+
+.nav-list__item-search {
+  @extend .nav-list__item;
+
+  flex-basis: 50px;
+  justify-content: center;
+
+  max-width: 55px;
+}
+
+.nav-list__search {
+  position: relative;
+
+  display: inline-block;
+  width: 50px;
+  height: 20px;
+
+  .sprite-img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    margin: auto;
+
+    opacity: 1;
+    transition: all $transition-fast;
+
+    &._close {
+      opacity: 0;
+      transform: scale(0.5, 0.5);
+    }
+  }
+
+  .nav-list__item-search:hover & {
+    .sprite-img {
+      &._close {
+        transform: scale(0.5, 0.5);
+        opacity: 0;
+      }
+    }
+  }
+  .nav-list__item-search._active & {
+    .sprite-img {
+      &._search {
+        opacity: 0;
+      }
+      &._close {
+        transform: scale(1, 1);
+        opacity: 1;
+      }
+    }
+  }
+}

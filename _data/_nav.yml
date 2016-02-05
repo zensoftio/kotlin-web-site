@@ -3,20 +3,19 @@
 main:
   docs:
     url: /docs/reference/
-    title: Learn
+    title: Documentation
 
   contribute:
     url: /contribute.html
-    title: Contribute
+    title: Tutorials
 
   try:
     url: http://try.kotlinlang.org
     title: Try Online
 
-  download:
-    url: /#get-kotlin
-    title: Download
-    show: false
+  community:
+    url: /community
+    title: Community
 
 
 # Docs section navigation

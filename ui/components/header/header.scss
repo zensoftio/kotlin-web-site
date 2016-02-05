@@ -1,0 +1,190 @@
+@import "./config";
+@import "../core/utils";
+
+.header {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+
+  display: flex;
+  overflow: hidden;
+
+  background: $header-main-background;
+
+  .home-page &{
+    overflow: visible;
+    background: transparent;
+  }
+}
+
+// Logo
+.header__logo {
+  position: relative;
+
+  display: block;
+  margin-left: -37px;
+  height: $header-main-height;
+
+  transition: height $transition-fast;
+
+  /*.header._fixed & {
+    height: $header-main-fixed-height;
+  }*/
+}
+
+.header__logo-default {
+  position: absolute;
+  top: 50%;
+  left: 0;
+
+  transition: opacity $transition-fast;
+  opacity: 1;
+
+  margin: -66px 0 0;
+  width: 127px;
+  height: 137px;
+
+  /*.header._fixed & {
+    opacity: 0;
+  }*/
+}
+.header__logo-simple {
+  position: absolute;
+  top: 50%;
+  left: 36px;
+
+  margin: -27px 0 0;
+  width: 54px;
+  height: 54px;
+}
+
+
+//
+.header__title {
+  margin: 0 0 25px;
+
+  color: $color-text-gray-dark;
+
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 30px;
+}
+
+.header__secondary-name {
+  $paddingLeft: $product-logo-width + $product-logo-margin;
+  $paddingLeft-lg: $product-logo-width-lg + $product-logo-margin-lg;
+  $paddingLeft-md: $product-logo-width-md + $product-logo-margin-md;
+
+  position: relative;
+
+  display: inline-block;
+  //padding-left: $paddingLeft;
+
+  //transform: translate(-$paddingLeft, 0);
+  transition: all $transition-fast;
+
+  color: $color-black;
+  cursor: default;
+  vertical-align: middle;
+  text-decoration: none;
+
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  white-space: nowrap;
+
+  &._no-logo {
+    padding-left: 0;
+    transform: translate(0, 0);
+  }
+
+  &:link {
+    cursor: pointer;
+  }
+  &:focus,
+  &:visited,
+  &:hover {
+    color: $color-black;
+    text-decoration: none;
+  }
+
+  @include make-break-lg {
+    //transform: translate(-$paddingLeft-lg, 0);
+    font-size: 20px;
+
+    .header__secondary._fixed & {
+      padding-left: $paddingLeft-lg;
+    }
+  }
+  @include make-break-md {
+    //transform: translate(-$paddingLeft-md, 0);
+    font-size: 18px;
+
+    .header__secondary._fixed & {
+      padding-left: $paddingLeft-md;
+    }
+  }
+
+  .header__secondary._fixed & {
+    //transform: translate(0, 0);
+    padding-left: $paddingLeft;
+
+    &._no-logo {
+      padding-left: 0;
+    }
+  }
+}
+
+.header__secondary-logo {
+  position: absolute;
+  top: 50%;
+  left: 0;
+
+  margin: -25px 0 0 -$product-logo-width;
+  width: $product-logo-width;
+  height: 50px;
+
+  opacity: 0;
+  visibility: hidden;
+  vertical-align: middle;
+  transition: all $transition-fast;
+
+  .header__secondary._fixed & {
+    margin-left: 0;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  @include make-break-lg {
+    margin-left: -$product-logo-width-lg;
+    width: $product-logo-width-lg;
+  }
+  @include make-break-md {
+    margin-left: -$product-logo-width-lg;
+    width: $product-logo-width-md;
+  }
+}
+
+.header__secondary-logo-menu-wrap {
+  position: relative;
+  top: -30px;
+  display: inline-block;
+
+  width: 1px;
+  height: 1px;
+}
+
+.header__secondary-logo-menu {
+  position: absolute;
+  top: 11px;
+  z-index: 1;
+
+  margin-left: $vertical-unit/2;
+  padding-top: 3px;
+  padding-left: 10px;
+  border-left: 1px solid $color-border-gray-light;
+
+  line-height: 17px;
+  white-space: nowrap;
+}

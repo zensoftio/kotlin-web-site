@@ -1,0 +1,24 @@
+/**
+ * @name Header
+ * @version 1.0
+ * @description Config of the Header block
+ */
+
+@import "../core/config";
+
+$header-main-height: 75px;
+$header-main-fixed-height: 55px;
+$header-main-background: $color-white;
+
+$header-secondary-height: 60px;
+$header-secondary-background: $color-white;
+
+$header-sub-background: $color-white;
+
+$product-logo-width: 50px;
+$product-logo-width-lg: 40px;
+$product-logo-width-md: 30px;
+
+$product-logo-margin: 20px;
+$product-logo-margin-lg: 15px;
+$product-logo-margin-md: 10px;

@@ -1,0 +1,43 @@
+@import "../core/config";
+
+$input-font-size: 32px;
+$input-color: $color-text-gray-dark;
+$input-placeholder-color: $color-text-gray-medium-light;
+$border-color: #b7bbbe;
+
+.search-box {
+  display: flex;
+  justify-content: space-between;
+
+  padding: 0 0 12px;
+  height: $vertical-unit;
+
+  border-bottom: 1px solid $border-color;
+}
+.search-box__label {
+  flex: 1 0 0;
+}
+.search-box__input {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: $vertical-unit;
+
+  border: none;
+  color: $input-color;
+
+  font-size: $input-font-size;
+  font-weight: 400;
+  line-height: $vertical-unit;
+
+  &::-webkit-input-placeholder { color: $input-placeholder-color; }
+  &::-moz-placeholder          { color: $input-placeholder-color; } /* Firefox 19+ */
+  &:-moz-placeholder           { color: $input-placeholder-color; } /* Firefox 18- */
+  &:-ms-input-placeholder      { color: $input-placeholder-color; }
+
+  &:focus {
+    outline: 0;
+  }
+}
+.search-box__button {}

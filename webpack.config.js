@@ -21,7 +21,7 @@ var webpackConfig = {
     filename: '[name].js'
   },
   resolve: {
-    modulesDirectories: ['node_modules', './js', './ui']
+    modulesDirectories: ['node_modules', './js', './css', './ui']
   },
 
   debug: isProduction,
@@ -29,6 +29,13 @@ var webpackConfig = {
 
   module: {
     loaders: [
+      {
+        test: /\.css$/,
+        loader: WebpackExtractTextPlugin.extract([
+          'css',
+          'postcss'
+        ].join('!'))
+      },
       {
         test: /\.scss$/,
         loader: WebpackExtractTextPlugin.extract([
