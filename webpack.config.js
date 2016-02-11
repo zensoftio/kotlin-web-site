@@ -7,13 +7,15 @@ var Webpack = require('webpack');
 var WebpackExtractTextPlugin = require('extract-text-webpack-plugin');
 var extend = require('extend');
 var autoprefixer = require('autoprefixer');
+var postcssSvg = require('postcss-svg');
 var config = require('./package.json').config;
 
 var isProduction = process.env.NODE_ENV === 'production';
 
 var webpackConfig = {
   entry: {
-    'index': './index.entry.js'
+    'index': './ui/entry-points/index.entry.js',
+    'reference': './ui/entry-points/reference.entry.js'
   },
   output: {
     path: path.join(__dirname, '_site/_assets'),
@@ -52,6 +54,7 @@ var webpackConfig = {
   },
 
   postcss: [
+    postcssSvg(),
     autoprefixer({browsers: ['last 2 versions']})
   ],
 

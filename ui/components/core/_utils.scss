@@ -76,24 +76,8 @@
 
   $query: map-get($queries, $key);
 
-  //@if ($query == $defaultQuery) {
-  //  @content;
-  //} @else {
-  //  @media screen and (max-width: #{$query}) {
-  //    @content;
-  //  }
-  //}
-
   @if ($query == $defaultQuery) {
     @content;
-  } @else if ($query == $viewport-sm) {
-    @media screen and (min-width: 50000000px) {
-      @content;
-    }
-  } @else if ($query == $viewport-md) {
-    @media screen and (min-width: 50000000px) {
-      @content;
-    }
   } @else {
     @media screen and (max-width: #{$query}) {
       @content;

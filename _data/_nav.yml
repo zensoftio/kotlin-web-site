@@ -14,8 +14,24 @@ main:
     title: Try Online
 
   community:
-    url: /community
     title: Community
+    items:
+      github:
+        title: GitHub
+        url: https://github.com/JetBrains/kotlin
+      twitter:
+        title: Twitter
+        url: https://twitter.com/kotlin
+      slack:
+        title: Slack
+        url: http://kotlinslackin.herokuapp.com/
+      youtrack:
+        title: Bug Tracker
+        url: https://youtrack.jetbrains.com/issues/KT
+      forum:
+        title: Forum
+        url: https://discuss.kotlinlang.org/
+
 
 
 # Docs section navigation

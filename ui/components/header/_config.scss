@@ -1,24 +1,21 @@
-/**
- * @name Header
- * @version 1.0
- * @description Config of the Header block
- */
-
+@import "../core/colors";
 @import "../core/config";
 
-$header-main-height: 75px;
-$header-main-fixed-height: 55px;
-$header-main-background: $color-white;
+$header-height: 75px;
 
-$header-secondary-height: 60px;
-$header-secondary-background: $color-white;
+$header-bg-color: transparent;
+$header-text-color: #221f1f;
+$header-white-text-color: #fff;
+$header-item-color: $header-text-color;
+$header-item-hover-color: $color-text-gray-dark;
+$header-item-bg-hover-color: $color-white;
 
-$header-sub-background: $color-white;
+$header-white-text-color: $color-white;
 
-$product-logo-width: 50px;
-$product-logo-width-lg: 40px;
-$product-logo-width-md: 30px;
+$header-logo-width: 118px;
+$header-logo-height: 130px;
 
-$product-logo-margin: 20px;
-$product-logo-margin-lg: 15px;
-$product-logo-margin-md: 10px;
+$header-menu-padding: 15px;
+$header-title-font-size: 24px;
+
+$header-transition-time: $transition-xfast;

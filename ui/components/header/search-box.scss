@@ -1,43 +1,61 @@
-@import "../core/config";
-
-$input-font-size: 32px;
-$input-color: $color-text-gray-dark;
-$input-placeholder-color: $color-text-gray-medium-light;
-$border-color: #b7bbbe;
-
 .search-box {
-  display: flex;
-  justify-content: space-between;
+  vertical-align: middle;
+  height: 75px;
+  padding-top: 17px;
+  margin-left: 5px;
 
-  padding: 0 0 12px;
-  height: $vertical-unit;
+  .gsc-input {
+    height: 34px;
+    width: 100%;
+    padding-right: 0;
+  }
 
-  border-bottom: 1px solid $border-color;
-}
-.search-box__label {
-  flex: 1 0 0;
-}
-.search-box__input {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: $vertical-unit;
+  .search-button:hover {
+    opacity: 1;
+  }
 
-  border: none;
-  color: $input-color;
+  .gsc-search-button {
+    display: none;
+  }
 
-  font-size: $input-font-size;
-  font-weight: 400;
-  line-height: $vertical-unit;
+  .gsc-clear-button {
+    display: none;
+  }
 
-  &::-webkit-input-placeholder { color: $input-placeholder-color; }
-  &::-moz-placeholder          { color: $input-placeholder-color; } /* Firefox 19+ */
-  &:-moz-placeholder           { color: $input-placeholder-color; } /* Firefox 18- */
-  &:-ms-input-placeholder      { color: $input-placeholder-color; }
+  .gsc-control-searchbox-only {
+    border: 1px solid #42454a;
+  }
 
-  &:focus {
-    outline: 0;
+  .gsc-search-box {
+    margin-bottom: 0;
+
+    input.gsc-input {
+      box-sizing: border-box;
+      border: 0;
+      padding: 0 0 0 10px;
+      //border-radius: 4px;
+
+      &::-webkit-input-placeholder {
+        font-size: 12px;
+        font-weight: 700;
+        color: #bdbdbd;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+      }
+
+      &:-ms-input-placeholder {
+        font-size: 12px;
+        font-weight: 700;
+        color: #bdbdbd;
+        text-transform: uppercase;
+      }
+
+      &::-moz-placeholder {
+        font-size: 12px;
+        font-weight: 700;
+        color: #bdbdbd;
+        text-transform: uppercase;
+      }
+    }
   }
 }
-.search-box__button {}

@@ -1,7 +1,8 @@
 require('./index.scss');
-require('components/grid');
-require('components/header');
 require('components/core/core.scss');
+
+require('components/grid');
+var header = require('components/header');
 require('components/button');
 require('fullpage.js');
 require('fullpage.js/jquery.fullPage.css');
@@ -9,26 +10,17 @@ require('fullpage.js/jquery.fullPage.css');
 require('page/index');
 require('com/cookie-banner');
 
-var dispatcher = require('utils/dispatcher');
 var $ = require('jquery');
 
 $(document).ready(function () {
-  var headerSelector = '.header';
-  var header = $(headerSelector);
+  header.init();
 
   $('#fullpage').fullpage({
-    paddingTop: '70px',
-    sectionsColor: ['#fff', '#3b3e43', '#fff', '#3b3e43'],
-    fixedElements: '.header',
-    afterLoad: function(anchorLink, index){
-      if(index % 2 == 1){
-        header.removeClass('_dark');
-        $('.icon._kotlin-text').removeClass('_white');
-      } else {
-        header.addClass('_dark');
-        $('.icon._kotlin-text').addClass('_white')
-      }
-    }
+    sectionsColor: ['transparent', '#3b3e43', '#fff', '#3b3e43']
+  });
+
+  $('.learn-more-button').on('click', function(){
+    $.fn.fullpage.moveSectionDown();
   });
 
   var $tabs = $('.tabs__tab');
