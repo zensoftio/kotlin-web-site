@@ -8,5 +8,5 @@ var $ = require('jquery');
 
 $(document).ready(function () {
   header.init();
-  new NavTree(document.getElementById('reference-nav'));
+  new NavTree(document.getElementById('tutorials-nav'));
 });
