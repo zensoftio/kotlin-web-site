@@ -12,3 +12,7 @@
 <link rel="apple-touch-icon" sizes="114x114" href="{{ site.baseurl }}/assets/images/apple-touch-icon-114x114.png" />
 <link rel="apple-touch-icon" sizes="144x144" href="{{ site.baseurl }}/assets/images/apple-touch-icon-144x144.png" />
 <link rel="stylesheet" href="{{ site.baseurl }}/css/styles.css">
+{% if page.entry-point %}
+<link rel="stylesheet" href="/_assets/{{page.entry-point}}.css"/>
+<script src="/_assets/{{page.entry-point}}.js"></script>
+{% endif %}

@@ -15,7 +15,11 @@ var isProduction = process.env.NODE_ENV === 'production';
 var webpackConfig = {
   entry: {
     'index': './ui/entry-points/index.entry.js',
-    'reference': './ui/entry-points/reference.entry.js'
+    'reference': './ui/entry-points/reference.entry.js',
+    'resources': './ui/entry-points/resources.entry.js',
+    'tutorials': './ui/entry-points/tutorials.entry.js',
+    'videos': './ui/entry-points/videos.entry.js',
+    'events': './ui/entry-points/events.entry.js',
   },
   output: {
     path: path.join(__dirname, '_site/_assets'),

@@ -7,7 +7,6 @@ require('components/button');
 require('fullpage.js');
 require('fullpage.js/jquery.fullPage.css');
 
-require('page/index');
 require('com/cookie-banner');
 
 var $ = require('jquery');

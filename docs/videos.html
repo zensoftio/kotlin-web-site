@@ -2,6 +2,7 @@
 layout: docs-page
 title: Videos
 docs_nav_id: videos
+entry-point: videos
 ---
 
 
@@ -15,14 +16,3 @@ docs_nav_id: videos
         <div id="video-description" class="video-gallery-description"></div>
     </article>
 </div>
-
-<script>
-require(['page/videos'], function(page) {
-    page({
-        elem: document.getElementById('video-gallery'),
-        playerElem: document.getElementById('video-player'),
-        descriptionElem: document.getElementById('video-description'),
-        videos: {{ site.data.videos | json }}
-    });
-});
-</script>
