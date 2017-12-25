@@ -1,26 +1,26 @@
-import EVENTS from "./../events-list";
-import emitter from "../../../util/emitter";
-import icon from './marker.png';
-import inactiveIcon from './marker-inactive.png';
-import highlightedIcon from './marker-highlighted.png';
-import taggedIcon from './marker-tagged.png';
-import taggedHighlightedIcon from './marker-tagged-highlighted.png';
+var icon = require('./marker-icon.png');
+var inactiveIcon = require('./marker-icon-inactive.png');
+var highlightedIcon = require('./marker-icon-highlighted.png');
+var EVENTS = require('./../events-list');
+var emitter = require('../../../util/emitter');
 
 export default class Marker {
   /**
    * @param {Event} event
    * @param {Object} map Google Map instance
+   * @param {Object} offset Latitude and Longitude to add to `event.city.position`
    */
-  constructor(event, map) {
+  constructor(event, map, offset) {
     const marker = event.marker = this;
     this.event = event;
     this.map = map;
     this.isActive = true;
     this.isHighlighted = false;
+    this.offset = offset;
 
     const markerInstance = new google.maps.Marker({
       title: event.title,
-      position: event.city.position,
+      position: this.calculatePosition(),
       draggable: false,
       visible: true,
       icon: this.getIcon(),
@@ -53,6 +53,11 @@ export default class Marker {
     });
 
     this.infoWindow = infoWindow;
+  }
+
+  calculatePosition() {
+      let cityPosition = this.event.city.position;
+      return {lat: cityPosition.lat + this.offset.lat, lng: cityPosition.lng + this.offset.lng};
   }
 
   getIcon() {
