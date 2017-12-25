@@ -3,6 +3,7 @@ import emitter from "../../../util/emitter";
 import EVENTS from "./../events-list";
 import Marker from "./Marker";
 import limitMap from "./limit-map-bounds";
+import styles from './styles';
 
 const MAP_API_URL = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAMF-gJllft62W5l9xfgE6DBhaa6YmIJs0';
 
@@ -16,7 +17,7 @@ const mapOptions = {
   zoomControl: true,
   maxZoom: 12,
   minZoom: 2,
-  styles: require('./styles')
+  styles
 };
 
 export default class Map {
@@ -27,7 +28,6 @@ export default class Map {
    */
   constructor(node, store, initialFilters = null) {
     const $mapNode = $(node);
-    const that = this;
     this.node = $mapNode.get(0);
     this.store = store;
     this.markers = [];
@@ -101,7 +101,6 @@ export default class Map {
   }
 
   /**
-   * @static
    * @param {HTMLElement} node
    * @param {EventsStore} store
    * @param {Object} initialFilters
@@ -112,62 +111,72 @@ export default class Map {
   }
 
   /**
+   * @param {Object} position
+   * @param {number} x Latitude offset in meters
+   * @param {number} y Longitude offset in meters
+   * */
+  static calculateOffset(position, x, y) {
+    // Hack from http://gis.stackexchange.com/a/2964
+    let _x = x / 111111;
+    let _y = y / Math.cos(position.lat * Math.PI / 180) / 111111;
+    return {lat: _x, lng: _y};
+  }
+
+  /**
    * @param {Array<Event>} events
    */
   _createMarkers(events) {
     const map = this;
     const markers = [];
 
-  const cities = [];
-  const eventsByCities = {};
+    const cities = [];
+    const eventsByCities = {};
 
-  events.forEach(event => {
-    let city = event.city;
+    events.forEach(event => {
+      let city = event.city;
 
-    if (!event.city) {
+      if (!event.city) {
         return;
-    }
+      }
 
-    if(cities.indexOf(city) >= 0) {
-      eventsByCities[city].push(event);
-    } else {
-      cities.push(city);
-      eventsByCities[city] = [event];
-    }
-  });
-
-  let step = 500;  // The grid step in meters
-
-  cities.forEach(city => {
-    var x = 0;
-    var y = 0;
-
-    eventsByCities[city].forEach(event => {
-      markers.push(new Marker(event, map, _calculateOffset(city.position, x * step, y * step)));
-
-      if(x == 0) {
-        x = y + 1;
-        y = 0;
+      if (cities.indexOf(city) >= 0) {
+        eventsByCities[city].push(event);
       } else {
-        x--;
-        y++;
+        cities.push(city);
+        eventsByCities[city] = [event];
       }
     });
-  });
+
+    let step = 500;  // The grid step in meters
+
+    cities.forEach(city => {
+      var x = 0;
+      var y = 0;
+
+      eventsByCities[city].forEach(event => {
+        const offset = Map.calculateOffset(city.position, x * step, y * step);
+        markers.push(new Marker(event, map, offset));
+
+        if (x === 0) {
+          x = y + 1;
+          y = 0;
+        } else {
+          x--;
+          y++;
+        }
+      });
+    });
 
     this.markers = markers;
   }
 
-  _limitWorldBounds() {
-    const map = this.instance;
-
+  limitWorldBounds() {
     const maxBounds = new google.maps.LatLngBounds(
       new google.maps.LatLng(-85, -175),
       new google.maps.LatLng(85, 175)
     );
-
-  limitMap(map, maxBounds);
-};
+    limitMap(this.instance, maxBounds);
+  };
 
   reset() {
     this.markers.forEach((marker) => {
@@ -201,15 +210,3 @@ export default class Map {
     }
   }
 }
-
-/**
- * @param {Object} position
- * @param {number} x Latitude offset in meters
- * @param {number} y Longitude offset in meters
- * */
-var _calculateOffset = function(position, x, y) {
-    // Hack from http://gis.stackexchange.com/a/2964
-    let _x = x / 111111;
-    let _y = y / Math.cos(position.lat * Math.PI / 180) / 111111;
-    return {lat: _x, lng: _y};
-};

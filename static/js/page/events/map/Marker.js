@@ -56,13 +56,15 @@ export default class Marker {
   }
 
   calculatePosition() {
-      let cityPosition = this.event.city.position;
-      return {lat: cityPosition.lat + this.offset.lat, lng: cityPosition.lng + this.offset.lng};
+    let cityPosition = this.event.city.position;
+    return {
+      lat: cityPosition.lat + this.offset.lat,
+      lng: cityPosition.lng + this.offset.lng
+    };
   }
 
   getIcon() {
     const {isActive, isHighlighted} = this;
-    const mapZoom = this.map.instance.getZoom();
     const hasTags = this.event.tags.length > 0;
     let iconUrl = isActive ? (hasTags ? taggedIcon : icon) : inactiveIcon;
 
