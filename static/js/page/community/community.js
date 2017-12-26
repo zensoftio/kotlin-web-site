@@ -14,10 +14,6 @@ function setAnimation(id) {
   var linkElement = document.querySelector('[data-svg-id="' + id + '"]');
   var svgElement = document.getElementById(id);
 
-  if(!svgElement){
-    console.log(id)
-  }
-
   if (linkElement) {
     linkElement.setAttribute('data-aos', 'animation');
     linkElement.setAttribute('data-aos-anchor', ".all-speak-kotlin");
