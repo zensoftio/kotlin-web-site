@@ -1,8 +1,12 @@
-var icon = require('./marker-icon.png');
-var inactiveIcon = require('./marker-icon-inactive.png');
-var highlightedIcon = require('./marker-icon-highlighted.png');
-var EVENTS = require('./../events-list');
-var emitter = require('../../../util/emitter');
+import EVENTS from "./../events-list";
+import emitter from "../../../util/emitter";
+
+// Icons
+import icon from './marker.png';
+import inactiveIcon from './marker-inactive.png';
+import highlightedIcon from './marker-highlighted.png';
+import taggedIcon from './marker-tagged.png';
+import taggedHighlightedIcon from './marker-tagged-highlighted.png';
 
 export default class Marker {
   /**
