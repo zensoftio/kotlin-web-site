@@ -3,6 +3,7 @@ import NavTree from '../com/nav-tree/index'
 
 $(document).ready(() => {
   new NavTree(document.querySelector('.js-side-tree-nav'));
+  postProcessCodeBlocks();
 });
 
 function postProcessCodeBlocks() {
@@ -11,8 +12,8 @@ function postProcessCodeBlocks() {
 
     // Ensure preferred DSL is valid, defaulting to Groovy DSL
     function initPreferredBuildScriptLanguage() {
-        var lang = window.localStorage.getItem("preferred-gradle-dsl");
-        if (GRADLE_DSLs.indexOf(lang) === -1) {
+      let lang = window.localStorage.getItem("preferred-gradle-dsl");
+      if (GRADLE_DSLs.indexOf(lang) === -1) {
             window.localStorage.setItem("preferred-gradle-dsl", "groovy");
             lang = "groovy";
         }
@@ -25,9 +26,9 @@ function postProcessCodeBlocks() {
 
     function processSampleEl(sampleEl, prefLangId) {
         if (sampleEl.getAttribute("data-lang") !== prefLangId) {
-            sampleEl.classList.add("hidden");
+            sampleEl.classList.add("hide");
         } else {
-            sampleEl.classList.remove("hidden");
+            sampleEl.classList.remove("hide");
         }
     }
 
@@ -56,28 +57,29 @@ function postProcessCodeBlocks() {
                 (sampleCollection[0].previousElementSibling == null ||
                     !sampleCollection[0].previousElementSibling.classList.contains("multi-language-selector"))
             ) {
-                var languageSelectorFragment = document.createDocumentFragment();
-                var multiLanguageSelectorElement = document.createElement("div");
-                multiLanguageSelectorElement.classList.add("multi-language-selector");
+              const languageSelectorFragment = document.createDocumentFragment();
+              const multiLanguageSelectorElement = document.createElement("div");
+              multiLanguageSelectorElement.classList.add("multi-language-selector");
                 languageSelectorFragment.appendChild(multiLanguageSelectorElement);
 
                 sampleCollection.forEach(function (sampleEl) {
-                    var optionEl = document.createElement("code");
-                    var sampleLanguage = sampleEl.getAttribute("data-lang");
-                    optionEl.setAttribute("data-lang", sampleLanguage);
+                  const optionEl = document.createElement("code");
+                  const sampleLanguage = sampleEl.getAttribute("data-lang");
+                  optionEl.setAttribute("data-lang", sampleLanguage);
                     optionEl.setAttribute("role", "button");
+
                     optionEl.classList.add("language-option");
 
                     optionEl.innerText = capitalizeFirstLetter(sampleLanguage);
 
                     optionEl.addEventListener("click", function updatePreferredLanguage(evt) {
-                        var preferredLanguageId = optionEl.getAttribute("data-lang");
-                        window.localStorage.setItem("preferred-gradle-dsl", preferredLanguageId);
+                      const preferredLanguageId = optionEl.getAttribute("data-lang");
+                      window.localStorage.setItem("preferred-gradle-dsl", preferredLanguageId);
 
                         // Record how far down the page the clicked element is before switching all samples
-                        var beforeOffset = evt.target.offsetTop;
+                      const beforeOffset = evt.target.offsetTop;
 
-                        switchSampleLanguage(preferredLanguageId);
+                      switchSampleLanguage(preferredLanguageId);
 
                         // Scroll the window to account for content height differences between different sample languages
                         window.scrollBy(0, evt.target.offsetTop - beforeOffset);
@@ -99,7 +101,3 @@ function postProcessCodeBlocks() {
 
     switchSampleLanguage(preferredBuildScriptLanguage);
 }
-
-document.addEventListener("DOMContentLoaded", function(event) {
-    postProcessCodeBlocks();
-});

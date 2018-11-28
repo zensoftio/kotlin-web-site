@@ -55,7 +55,7 @@ Or, starting with Kotlin 1.1.1, the plugin can be applied using the [Gradle plug
 
 
 <div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" mode="groovy" theme="idea">
+<div class="sample" markdown="1" mode="groovy" theme="idea" data-highlight-only>
 
 ```groovy
 plugins {
@@ -67,7 +67,7 @@ plugins {
 </div>
 
 <div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" mode="kotlin" theme="idea" data-lang="kotlin">
+<div class="sample" markdown="1" mode="kotlin" theme="idea" data-lang="kotlin" data-highlight-only>
 
 ```kotlin
 plugins {
@@ -110,7 +110,7 @@ sourceSets {
 </div>
 
 <div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" mode="kotlin" theme="idea" data-lang="kotlin">
+<div class="sample" markdown="1" mode="kotlin" theme="idea" data-lang="kotlin" data-highlight-only>
 
 ```kotlin
 sourceSets {
