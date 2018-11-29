@@ -4,7 +4,7 @@
 p, ul, li, h4 {
   font-family: $font-family-sans-serif;
   font-weight: normal;
-  line-height: 1.6;
+  line-height: 1.6 !important;
 }
 
 p {
@@ -24,7 +24,7 @@ ul {
       font-size: 20px;
       line-height: 1.6;
     &:before {
-      margin-left: -25px;
+      margin-left: -27px;
     }
   }
 }
