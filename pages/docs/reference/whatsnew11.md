@@ -290,7 +290,7 @@ For properties with the getter defined as an expression body, the property type 
 
 ```kotlin
 //sampleStart
-data class Person(val name: String, val age: Int) {
+    data class Person(val name: String, val age: Int) {
     val isAdult get() = age >= 20 // Property type inferred to be 'Boolean'
 }
 //sampleEnd
