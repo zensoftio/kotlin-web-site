@@ -16,10 +16,9 @@ $(document).ready(function () {
     const startIndex = code.indexOf(SAMPLE_START);
     const endIndex = code.indexOf(SAMPLE_END);
     if (startIndex > -1 && endIndex > -1) {
-      code = code.replace(`${SAMPLE_END}\n`,'').replace(`${SAMPLE_START}\n`,'');
-      // code = code.substring(code.indexOf(SAMPLE_START) + SAMPLE_START.length + 1);
-      // code = code.substring(0, code.indexOf(SAMPLE_END));
-      // if (code.charAt(0) === " ") code = code.split('\n').map(l => l.substring(2)).join("\n")
+      code = code.substring(code.indexOf(SAMPLE_START) + SAMPLE_START.length + 1);
+      code = code.substring(0, code.indexOf(SAMPLE_END));
+      if (code.charAt(0) === " ") code = code.split('\n').map(l => l.substring(4)).join("\n")
     }
     codeElement.textContent = code;
     hljs.highlightBlock(codeElement);

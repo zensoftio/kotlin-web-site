@@ -123,11 +123,11 @@ class Foo {
     lateinit var lateinitVar: String
 
     fun initializationLogic() {
-        //sampleStart
+//sampleStart
         println("isInitialized before assignment: " + this::lateinitVar.isInitialized)
         lateinitVar = "value"
         println("isInitialized after assignment: " + this::lateinitVar.isInitialized)
-        //sampleEnd
+//sampleEnd
     }
 }
 
@@ -188,12 +188,12 @@ the safe call receiver as well:
 ```kotlin
 fun countFirst(s: Any): Int {
 //sampleStart
-  val firstChar = (s as? CharSequence)?.firstOrNull()
-  if (firstChar != null)
+    val firstChar = (s as? CharSequence)?.firstOrNull()
+    if (firstChar != null)
     return s.count { it == firstChar } // s: Any is smart cast to CharSequence
-    
-  val firstItem = (s as? Iterable<*>)?.firstOrNull()
-  if (firstItem != null)
+
+    val firstItem = (s as? Iterable<*>)?.firstOrNull()
+    if (firstItem != null)
     return s.count { it == firstItem } // s: Any is smart cast to Iterable<*>
 //sampleEnd
     return -1
