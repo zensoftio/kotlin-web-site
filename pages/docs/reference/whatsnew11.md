@@ -212,7 +212,7 @@ fun main(args: Array<String>) {
   })
   // now
   println(map.mapValues { (key, value) -> "$key -> $value!" })
-//sampleEnd    
+//sampleEnd
 }
 ```
 </div>
@@ -232,7 +232,7 @@ fun main(args: Array<String>) {
 
 //sampleStart
     map.forEach { _, value -> println("$value!") }
-//sampleEnd    
+//sampleEnd
 }
 ```
 </div>
