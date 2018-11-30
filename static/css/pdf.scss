@@ -37,3 +37,7 @@ ul {
 a {
   margin-left: 1px;
 }
+
+table, tr, td, th, tbody, thead, tfoot {
+    page-break-inside: avoid !important;
+}
