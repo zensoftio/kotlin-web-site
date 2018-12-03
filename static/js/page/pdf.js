@@ -18,7 +18,7 @@ $(document).ready(function () {
     if (startIndex > -1 && endIndex > -1) {
       code = code.substring(code.indexOf(SAMPLE_START) + SAMPLE_START.length + 1);
       code = code.substring(0, code.indexOf(SAMPLE_END));
-      if (code.charAt(0) === " ") code = code.split('\n').map(l => l.substring(4)).join("\n")
+      if (!code.charAt(0).trim()) code = code.split('\n').map(l => l.substring(4)).join("\n")
     }
     codeElement.textContent = code;
     hljs.highlightBlock(codeElement);
