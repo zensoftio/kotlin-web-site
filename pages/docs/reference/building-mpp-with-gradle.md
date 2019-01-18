@@ -47,7 +47,7 @@ include the sources and dependencies from the source sets `jvmMain` and `commonM
 
 ![Source sets and compilation]({{ url_for('asset', path='images/reference/building-mpp-with-gradle/mpp-one-compilation.png') }})
 
-Here, the `jvmMain` source set provides [plaform-specific implementations](platform-specific-declarations.md) for the 
+Here, the `jvmMain` source set provides [plaform-specific implementations](platform-specific-declarations.html) for the 
 expected API in the shared `commonMain` sources. 
 
 In further sections, these concepts are described in more detail along with the DSL to configure them in a project.
